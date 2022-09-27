@@ -3,6 +3,7 @@ package com.epam.m1.exceptions;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Complete the code, parse integers, calculate the sum of numbers in the WORDS, join strings with
@@ -18,11 +19,22 @@ public class ParseIntegers {
     public static void main(String[] args) {
         Iterator<String> words = WORDS.iterator();
         int sum = 0;
-        String justWords = "";
+        String justWords = " ";
+        int number=0;
         while (words.hasNext()) {
+
             String next = words.next();
-            int number = Integer.parseInt(next);
+
+            try {
+
+                number = Integer.parseInt(next);
+
+            }catch (NumberFormatException ex){
+                justWords+=next+" ";
+                continue;
+            }
             // todo: complete it
+            sum += number;
         }
         System.out.println("Sum is " + sum);
         System.out.println("Just words:" + justWords);
